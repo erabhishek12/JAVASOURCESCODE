@@ -927,47 +927,88 @@
         </div>
     </div>
 
-    <!-- Share Modal -->
-    <div class="modal" id="shareModal">
-        <div class="modal-backdrop" onclick="closeModal('shareModal')"></div>
-        <div class="modal-content glass-morphism">
-            <button class="modal-close" onclick="closeModal('shareModal')">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-header">
-                <i class="fas fa-share-nodes"></i>
-                <h2>Share JavaSourceCode</h2>
+    <!-- Smart Share Modal -->
+<div class="modal" id="shareModal">
+    <div class="modal-backdrop" onclick="closeShareModal()"></div>
+    <div class="modal-content glass-morphism">
+        <button class="modal-close" onclick="closeShareModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Share Preview -->
+        <div class="share-preview" id="sharePreview">
+            <div class="share-preview-image" id="sharePreviewImage">
+                <i class="fas fa-file-alt"></i>
             </div>
-            <div class="modal-body">
-                <p>Help others discover free programming resources!</p>
-                <div class="share-buttons">
-                    <button class="share-btn-social whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp</span>
-                    </button>
-                    <button class="share-btn-social twitter">
-                        <i class="fab fa-twitter"></i>
-                        <span>Twitter</span>
-                    </button>
-                    <button class="share-btn-social facebook">
-                        <i class="fab fa-facebook"></i>
-                        <span>Facebook</span>
-                    </button>
-                    <button class="share-btn-social linkedin">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </button>
-                </div>
-                <div class="copy-link">
-                    <input type="text" id="shareLink" value="https://javasourcecode.com" readonly>
-                    <button onclick="copyShareLink()">
-                        <i class="fas fa-copy"></i>
-                    </button>
-                </div>
+            <div class="share-preview-info">
+                <h3 class="share-preview-title" id="sharePreviewTitle">Resource Title</h3>
+                <p class="share-preview-desc" id="sharePreviewDesc">Description will appear here</p>
+                <span class="share-preview-type" id="sharePreviewType">PDF</span>
             </div>
         </div>
+        
+        <div class="modal-header">
+            <i class="fas fa-share-nodes"></i>
+            <h2>Share This Resource</h2>
+        </div>
+        
+        <div class="modal-body">
+            <p>Share this resource with friends and classmates!</p>
+            
+            <!-- Social Share Buttons -->
+            <div class="share-buttons">
+                <button class="share-btn-social whatsapp" onclick="shareToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="share-btn-social twitter" onclick="shareToTwitter()">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </button>
+                <button class="share-btn-social facebook" onclick="shareToFacebook()">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </button>
+                <button class="share-btn-social linkedin" onclick="shareToLinkedIn()">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </button>
+                <button class="share-btn-social telegram" onclick="shareToTelegram()">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </button>
+                <button class="share-btn-social email" onclick="shareViaEmail()">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </button>
+            </div>
+            
+            <!-- Copy Link Section -->
+            <div class="copy-link-section">
+                <label>Or copy link:</label>
+                <div class="copy-link">
+                    <input type="text" id="shareLink" readonly>
+                    <button onclick="copyShareLink()" id="copyLinkBtn">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Native Share (Mobile) -->
+            <button class="native-share-btn" id="nativeShareBtn" onclick="triggerNativeShare()">
+                <i class="fas fa-share-alt"></i>
+                <span>More Sharing Options</span>
+            </button>
+        </div>
     </div>
+</div>
 
+<!-- Toast Notification -->
+<div class="share-toast" id="shareToast">
+    <i class="fas fa-check-circle"></i>
+    <span id="shareToastMessage">Link copied!</span>
+</div>
     <!-- Scripts -->
    
     <script>
@@ -1411,4 +1452,5 @@
 </body>
 
 </html>
+
 
